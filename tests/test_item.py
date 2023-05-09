@@ -35,3 +35,11 @@ def test_name(item_fixture):
 def test_name__exception(item_fixture):
     with pytest.raises(Exception):
         item_fixture.name = 'СуперСмартфон'
+
+
+def test_repr(item_fixture):
+    assert repr(item_fixture) == "Item('Булочка', 2.0, 8)"
+
+
+def test_str(item_fixture):
+    assert str(item_fixture) == 'Булочка'
