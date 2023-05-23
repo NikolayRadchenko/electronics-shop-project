@@ -28,3 +28,4 @@ def test_mixin(keyboard_fixture):
 def test_change_lange__attribute_error(keyboard_fixture):
     with pytest.raises(AttributeError):
         keyboard_fixture.language = 'CH'
+        
