@@ -2,10 +2,8 @@ from src.item import Item
 
 
 class MixinLanguage:
-    __language = 'EN'
-
     def __init__(self):
-        self.__language = self.__language
+        self.language = 'EN'
 
     @property
     def language(self):
@@ -28,3 +26,4 @@ class MixinLanguage:
 class KeyBoard(Item, MixinLanguage):
     def __init__(self, name: str, price: float, quantity: int):
         super().__init__(name, price, quantity)
+        MixinLanguage.__init__(self)
