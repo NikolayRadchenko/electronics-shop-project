@@ -1,4 +1,4 @@
 class InstantiateCSVError(Exception):
     """
-    Документация
+    Ошибка поврежденного файла CSV
     """

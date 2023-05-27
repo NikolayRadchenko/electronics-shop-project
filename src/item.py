@@ -39,7 +39,10 @@ class Item:
             with open('../src/items.csv', newline='') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
-                    Item(row['name'], float(row['price']), int(row['quantity']))
+                    if row['name'] and row['price'] and row['quantity']:
+                        Item(row['name'], float(row['price']), int(row['quantity']))
+                    else:
+                        raise InstantiateCSVError
         except FileNotFoundError:
             print('Отсутствует файл item.csv')
         except InstantiateCSVError:
