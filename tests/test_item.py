@@ -1,4 +1,5 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
+from src.exceptions import InstantiateCSVError
 from src.item import Item
 import pytest
 
@@ -20,7 +21,17 @@ def test_apply_discount(item_fixture):
 
 def test_instantiate_from_csv(item_fixture):
     item_fixture.instantiate_from_csv()
-    assert len(item_fixture.all) == 8
+    assert len(item_fixture.all) == 5
+
+
+def test_instantiate_from_csv__FileNotFoundError(item_fixture):
+    with pytest.raises(FileNotFoundError):
+        item_fixture.instantiate_from_csv(csv_path='../src/it.csv')
+
+
+def test_instantiate_from_csv__InstantiateCSVError(item_fixture):
+    with pytest.raises(InstantiateCSVError):
+        item_fixture.instantiate_from_csv(csv_path='../src/items_test.csv')
 
 
 def test_string_to_number():
